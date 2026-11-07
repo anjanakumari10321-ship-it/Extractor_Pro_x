@@ -22,3 +22,8 @@ dotenv
 flask
 pyrogram
 tgcrypto
+gunicorn
+Django
+gunicorn
+requests
+python-dotenv
