@@ -5,10 +5,11 @@ FROM python:3.10.11-slim
 WORKDIR /app
 
 # Install system dependencies (if needed, can be removed if not using any OS deps)
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get update -o Acquire::Retries=3 && \
+    apt-get install -y --no-install-recommends build-essential && \
+    rm -rf /var/lib/apt/lists/*
 # Copy requirements (if you use one)
 COPY requirements.txt .
 
